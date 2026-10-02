@@ -4,8 +4,8 @@ export async function getAllImages() {
     const {data, error} = await supabase
     .from('images')
     .select('*')
-    
     if(error) throw error;
+    
     return data
 }
 
@@ -37,7 +37,18 @@ export async function addImage(img_object, img_file) {
     .from('images')
     .insert(img_object)
     .select()
-    if(error) throw error
+    if(error) throw error;
+
+    return data
+}
+
+export async function editImageDate(id,img_date) {
+    const {data,error} = await supabase
+    .from('images')
+    .update(img_date)
+    .eq('id',id)
+    .select()
+    if(error) throw error;
 
     return data
 }
