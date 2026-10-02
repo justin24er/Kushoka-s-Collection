@@ -1,7 +1,7 @@
-import { createClient } from '@supabase/supabase-js';
+/* import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = 'https://cgyaunzbdgkleistagbd.supabase.co';
-const supabaseKey = 'sb_publishable_NQ2mUm6AM6dqS_B91Uq_dQ_UOragN6x';
+const supabaseUrl = '';
+const supabaseKey = '';
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
@@ -48,3 +48,5 @@ async function uploadAll() {
     fs.writeFileSync('images-data.csv', csvRows.join('\n'))
     console.log(' Done! check images-data.csv');
 }
+
+uploadAll(); */
