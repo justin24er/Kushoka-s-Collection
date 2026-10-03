@@ -1,9 +1,9 @@
 import {useState, useEffect, useRef} from 'react'
+/* import Input from './components/ui/input'
+import ImageCard from './components/imageCard'
+import Form from './components/form' */
 import { useImages } from './hooks/useImages'
 import Button from './components/ui/button'
-import Input from './components/ui/input'
-import ImageCard from './components/imageCard'
-import Form from './components/form'
 import './App.css'
 
 
@@ -22,7 +22,7 @@ function App() {
         </header>
         <section className="main-content">
             <div className="page-des">
-                <h1 className="page-title">Kumbukumbu za <span className="name-tag">Kushoka</span></h1>
+                <h1 className="page-title"><span>Kumbukumbu</span><span>za</span><span className="name-tag">Kushoka</span></h1>
                 <p>taarifa ndogondogo na kumbukizi 
                     juu ya miradi na maendeleo yaliobebwa
                      na familia ya Kushoka, katika vipindi tofauti tofauti
@@ -37,7 +37,7 @@ function App() {
                         <div className="album-row row-1">
                             <div className="images-wrapper">
                                 {images.map(image => (
-                                    <div title={image.jina} className="image-container">
+                                    <div key={image.id} title={image.jina} className="image-container">
                                         <div className="image">
                                             <img src={image.url} width="100" height="100" loading="lazy" alt={image.jina} />
                                         </div>
@@ -49,7 +49,7 @@ function App() {
                         <div className="album-row row-2">
                             <div className="images-wrapper">
                                 {images.map(image => (
-                                    <div title={image.jina} className="image-container">
+                                    <div key={image.id} title={image.jina} className="image-container">
                                         <div className="image">
                                             <img src={image.url} width="100" height="100" loading="lazy" alt={image.jina} />
                                         </div>
@@ -61,7 +61,7 @@ function App() {
                         <div className="album-row row-3">
                             <div className="images-wrapper">
                                 {images.map(image => (
-                                    <div title={image.jina} className="image-container">
+                                    <div key={image.id} title={image.jina} className="image-container">
                                         <div className="image">
                                             <img src={image.url} width="100" height="100" loading="lazy" alt={image.jina} />
                                         </div>
@@ -73,6 +73,14 @@ function App() {
                     </div>
                 )}
         </section>
+        <footer>
+            &copy; All rights reserved {(new Date())
+            .toLocaleDateString()
+            .split("/")[2]}. 
+            imetengenezwa na kuandaliwa na <a href="#">
+                Samwel Kushoka Cheo
+            </a>.
+        </footer>
     </main>)
 }
 export default App;
