@@ -22,7 +22,14 @@ function App() {
         </header>
         <section className="main-content">
             <div className="page-des">
-                <h1 className="page-title"><span>Kumbukumbu</span><span>za</span><span className="name-tag">Kushoka</span></h1>
+                <h1 className="page-title">
+                    <span>Kumbukumbu</span>
+                    <span className="letter-list" aria-lable="za">
+                        <span data-letter="z"></span>
+                        <span data-letter="a"></span>
+                    </span>
+                    <span className="name-tag">Kushoka</span>
+                </h1>
                 <p>taarifa ndogondogo na kumbukizi 
                     juu ya miradi na maendeleo yaliobebwa
                      na familia ya Kushoka, katika vipindi tofauti tofauti

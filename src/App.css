@@ -32,8 +32,36 @@ section.main-content {
 .page-title .name-tag {
     margin-inline-start: 12rem;
 }
-.page-title span:nth-child(2) {
+.page-title > span:nth-child(2).letter-list {
     margin-inline-start: 10rem;
+    display: flex;
+    perspective: 300px;
+}
+.letter-list > span {
+    position: relative;
+    width: 1.7rem;
+    height: 2.5rem;
+    transform-style: preserve-3d;
+    animation: flip 1s linear infinite alternate;
+    animation-delay: calc((sibling-index() - 1) * .5s)
+}
+@keyframes flip {
+
+}
+.letter-list > span::after,
+.letter-list > span::before  {
+    content: attr(data-letter);
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backface-visibility: hidden;
+}
+.letter-list > span::after {
+    transform: rotateX(180deg);
+    -webkit-text-stroke: 1px  var(--clr-font);
+    -webkit-text-fill-color: var(--clr-bg)
 }
 .page-des p {
     line-height: 1.5;

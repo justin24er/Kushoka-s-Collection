@@ -6,7 +6,7 @@ button.admin-btn {
     padding-inline: 1rem;
     font-weight: var(--fw-500);
     outline: none;
-    color: var(--clr-font);
+    color: var(--clr-btn);
     letter-spacing: 1px;
     border: none;
     background: var(--clr-bg);
@@ -17,21 +17,10 @@ button.admin-btn {
     font-size: var(--fs-500);
     position: relative;
     overflow: hidden;
-}
-button.admin-btn::after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 1px;
-    background: #0000005b;
-    left: 1rem;
-    bottom: .4rem;
     transition: .3s;
 }
 button.admin-btn:hover {
-    &::after {
-        width: 65%;
-    }
+    color: var(--clr-font);    
 }
 button.admin-btn:active {
     box-shadow: inset 4px 4px 5px #cacaca,
