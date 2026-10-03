@@ -25,12 +25,12 @@ export async function deleteImage(id, fileName) {
 export async function addImage(img_object, img_file) {
     const {error: uploadError} = await supabase.storage
     .from('kush-gallery-imgs')
-    .upload(img_object.fileName, img_file)
+    .upload(img_object.faili, img_file)
     if(uploadError) throw uploadError;
 
     const {data: urlData} = supabase.storage
     .from('kush-gallery-imgs')
-    .getPublicUrl(img_object.fileName)
+    .getPublicUrl(img_object.faili)
 
     img_object = {...img_object, url: urlData.publicUrl}
     const {data, error} = await supabase
