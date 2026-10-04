@@ -1,4 +1,4 @@
-import {useState, useEffect, useRef} from 'react'
+import {useState, useEffect} from 'react'
 /* import Input from './components/ui/input'
 import ImageCard from './components/imageCard'
 import Form from './components/form' */
@@ -6,7 +6,7 @@ import { useImages } from './hooks/useImages'
 import Button from './components/ui/button'
 import './App.css'
 import { useScrollLeft } from './hooks/useScrollLeft'
-
+import shiftLogo from './assets/up-arrow-thin.png'
 
 function App() {
     const {loading,
@@ -16,11 +16,25 @@ function App() {
            removeImage,
            editDate,
         } = useImages()
+        /*  const scrollRef1 = useScrollLeft(!loading && !error);
+        const scrollRef2 = useScrollLeft(!loading && !error);
+        const scrollRef3 = useScrollLeft(!loading && !error); */ /* will be used when necessary, required when vertical image scrolling feature is needed */
 
-    const scrollRef1 = useScrollLeft(!loading && !error);
-    const scrollRef2 = useScrollLeft(!loading && !error);
-    const scrollRef3 = useScrollLeft(!loading && !error);
-   
+    const [isKey, setIsKey] = useState(false)
+    
+    const handleKeyDown = (e) => e.key === "Shift" && setIsKey(true)
+    const handleKeyUp = (e) => e.key === "Shift" && setIsKey(false)
+
+    useEffect(() => {
+        window.addEventListener("keydown",handleKeyDown)
+        window.addEventListener("keyup",handleKeyUp)
+
+        return () => {
+            window.removeEventListener("keydown", handleKeyDown)
+            window.removeEventListener("keyup",handleKeyUp)
+        }
+    },[])
+
     return (<main>
         <header>
             <Button className="admin-btn">msimazi</Button>
@@ -40,13 +54,21 @@ function App() {
                      na familia ya Kushoka, katika vipindi tofauti tofauti
                      vya matukio. yote katika kuimarisha mawasiliano na umoja
                      wa familia, pitia picha zifuatazo zilizowekwa kama kumbukumbu
-                     za matukio hayo. 
+                     za matukio hayo.<br></br>
+                     <span className="instructions">
+                        kwa matumizi ya computer, shikiria(hold)&nbsp;
+                            <strong className={isKey ? "active" : ""}>
+                                SHIFT <img src={shiftLogo} width="30" height="25" loading="lazy" alt="shift-logo" />
+                            </strong> kisha
+                        tumia mouse-scroll ili kuona picha
+                        kushoto na kulia
+                     </span>
                 </p>
             </div>
             {loading ? <div className="loading page-album">{loading}</div> : 
                 (error ? <div className="error page-album">{error}</div> : 
                     <div className="page-album">
-                        <div ref={scrollRef1} className="album-row row-1">
+                        <div /* ref={scrollRef1} */ className="album-row row-1">
                             <div className="images-wrapper">
                                 {images.map(image => (
                                     <div key={image.id} title={image.jina} className="image-container">
@@ -66,7 +88,7 @@ function App() {
                                 ))}
                             </div>
                         </div>
-                        <div ref={scrollRef2} className="album-row row-2">
+                        <div /* ref={scrollRef2} */ className="album-row row-2">
                             <div className="images-wrapper">
                                 {images.map(image => (
                                     <div key={image.id} title={image.jina} className="image-container">
@@ -86,7 +108,7 @@ function App() {
                                 ))}
                             </div>
                         </div>
-                        <div ref={scrollRef3} className="album-row row-3">
+                        <div /* ref={scrollRef3} */ className="album-row row-3">
                             <div className="images-wrapper">
                                 {images.map(image => (
                                     <div key={image.id} title={image.jina} className="image-container">
@@ -113,9 +135,7 @@ function App() {
             &copy; All rights reserved {(new Date())
             .toLocaleDateString()
             .split("/")[2]}. 
-            imetengenezwa na kuandaliwa na <a href="#">
-                Samwel Kushoka Cheo
-            </a>.
+            imetengenezwa na kuandaliwa na <a href="#">Samwel Kushoka Cheo</a>.
         </footer>
     </main>)
 }

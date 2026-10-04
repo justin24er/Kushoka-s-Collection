@@ -2,18 +2,19 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100dvh;
-    margin-inline: 2rem;
+    position: absolute;
+    inset: 0;
+    min-height: max-content;
 }
 header {
     min-height: 65px;
     display: flex;
     justify-content: space-between;
-    padding: 1rem;
+    padding: 1rem 2rem;
 }
 section.main-content {
     display: flex;
-    padding: 1rem;
+    padding: 1rem 2rem;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 2rem;
@@ -26,9 +27,10 @@ section.main-content {
     max-width: 100%;
     display: flex;
     flex-direction: column;
+    text-align: center;
     gap: 1rem;
     flex-grow: 1;
-    mask: linear-gradient(to right, transparent, white 10%, white 90%, transparent);
+    mask: linear-gradient(to right, transparent, white var(--lefty,15%), white var(--righty,85%), transparent);
 }
 .album-row {
     height: 200px;
@@ -73,7 +75,10 @@ section.main-content {
     outline-offset: 5px;
 }
 .image-container:hover {
-    outline-color: var(--card-bg)
+    outline-color: var(--card-bg);
+    & .image img {
+        filter: saturate(150%)
+    }
 }
 .image-container .image {
     width: 100%;
@@ -111,6 +116,7 @@ section.main-content {
     display: flex;
     flex-direction: column;
     color: var(--clr-font);
+    
 }
 .page-title .name-tag {
     margin-inline-start: 12rem;
@@ -156,6 +162,49 @@ section.main-content {
     line-height: 1.5;
     max-width: 60ch;
 }
+.instructions strong {
+    display: inline-flex;
+    align-items: center;
+    background: #e9e6e6;
+    border: 1px solid #00000017;
+    padding: 0 0 0 .5rem;
+    border-radius: 3px;
+}
+.instructions strong.active {
+    scale: .95;
+    background: #dfdbdb;
+}
 footer {
     text-align: center;
+    min-height: 30px;
+    background: var(--card-bg);
+    color: var(--clr-bg) ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--fs-400);
+    position: relative;
+    line-height: 1.2;
+    @media screen and (max-width: 558px) {
+        flex-direction: column;
+        line-height: 1.5;
+        padding-top: .5rem;
+        font-size: var(--fs-300)
+    }
+}
+/* footer::after,
+footer::before {
+    content: "";
+    position: absolute;
+    width: 2rem;
+    height: 100%;
+    background: var(--card-bg)
+}
+footer::after {left: -2rem}
+footer::before {right: -2rem} */
+footer a {
+    margin-inline-start: .5rem;
+    text-decoration: none;
+    color: orange;
+    cursor: pointer;
 }

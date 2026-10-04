@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
-    --ff-primary: 'Hammersmith One';
+    --ff-primary: 'Mochiy Pop One';
     --ff-secondary: 'Raleway';
     --clr-font: #292929;
     --clr-bg: #f3f1f1;
@@ -10,16 +10,17 @@
     --bottom-shadow: #cacaca;
     --card-bg: var(--clr-font);
 
+    --fs-300: 10px;
     --fs-400: 12px;
     --fs-500: 14px;
     --fs-600: 18px;
-    --fs-700: 3rem;
+    --fs-700: 2.5rem;
 
     --fw-200: 200;
     --fw-400: 400;
     --fw-500: 500;
     --fw-600: 600;
-    --fw-700: 700;
+    --fw-700: 900;
 }
 /* @media (prefers-color-scheme: dark) {
    :root {
@@ -39,4 +40,7 @@ body {
     font-size: var(--fs-500);
     min-height: 100dvh;
     background: var(--clr-bg);
+    @media screen and (max-width: 514px ) {
+        font-size: var(--fs-400)
+    }
 }
