@@ -16,6 +16,10 @@ function App() {
            editDate,
         } = useImages()
 
+    const scrollRef1 = useRef(null);
+    const scrollRef2 = useRef(null);
+    const scrollRef3 = useRef(null);
+   
     return (<main>
         <header>
             <Button className="admin-btn">msimazi</Button>
@@ -38,41 +42,50 @@ function App() {
                      za matukio hayo. 
                 </p>
             </div>
-            {loading ? <div className="loading">{loading}</div> : 
-                (error ? <div className="error">{error}</div> : 
+            {loading ? <div className="loading page-album">{loading}</div> : 
+                (error ? <div className="error page-album">{error}</div> : 
                     <div className="page-album">
-                        <div className="album-row row-1">
+                        <div ref={scrollRef1} onWheel={(e) => {
+                            e.preventDefault();
+                            scrollRef1.current.scrollLeft += e.deltaY;
+                        }} className="album-row row-1">
                             <div className="images-wrapper">
                                 {images.map(image => (
                                     <div key={image.id} title={image.jina} className="image-container">
                                         <div className="image">
                                             <img src={image.url} width="100" height="100" loading="lazy" alt={image.jina} />
                                         </div>
-                                        <div className="image-date"></div>
+                                        <div className="image-date">{image.tarehe.replaceAll("-","/")}</div>
                                     </div>
                                 ))}
                             </div>
                         </div>
-                        <div className="album-row row-2">
+                        <div ref={scrollRef2} onWheel={(e) => {
+                            e.preventDefault();
+                            scrollRef2.current.scrollLeft += e.deltaY;
+                        }} className="album-row row-2">
                             <div className="images-wrapper">
                                 {images.map(image => (
                                     <div key={image.id} title={image.jina} className="image-container">
                                         <div className="image">
                                             <img src={image.url} width="100" height="100" loading="lazy" alt={image.jina} />
                                         </div>
-                                        <div className="image-date"></div>
+                                        <div className="image-date">{image.tarehe.replaceAll("-","/")}</div>
                                     </div>
                                 ))}
                             </div>
                         </div>
-                        <div className="album-row row-3">
+                        <div ref={scrollRef3} onWheel={(e) => {
+                            e.preventDefault();
+                            scrollRef3.current.scrollLeft += e.deltaY;
+                        }} className="album-row row-3">
                             <div className="images-wrapper">
                                 {images.map(image => (
                                     <div key={image.id} title={image.jina} className="image-container">
                                         <div className="image">
                                             <img src={image.url} width="100" height="100" loading="lazy" alt={image.jina} />
                                         </div>
-                                        <div className="image-date"></div>
+                                        <div className="image-date">{image.tarehe.replaceAll("-","/")}</div>
                                     </div>
                                 ))}
                             </div>

@@ -10,8 +10,8 @@ button.admin-btn {
     letter-spacing: 1px;
     border: none;
     background: var(--clr-bg);
-    box-shadow: 4px 4px 5px #cacaca,
-                -4px -4px 5px #fff;
+    box-shadow: 4px 4px 5px var(--bottom-shadow),
+                -4px -4px 5px var(--top-shadow);
     border-radius: 50px;
     corner-shape: squircle;
     font-size: var(--fs-500);
@@ -23,6 +23,6 @@ button.admin-btn:hover {
     color: var(--clr-font);    
 }
 button.admin-btn:active {
-    box-shadow: inset 4px 4px 5px #cacaca,
-                inset -4px -4px 5px #fff;
+    box-shadow: inset 4px 4px 5px var(--bottom-shadow),
+                inset -4px -4px 5px var(--top-shadow);
 }
