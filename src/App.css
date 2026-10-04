@@ -31,6 +31,10 @@ section.main-content {
     gap: 1rem;
     flex-grow: 1;
     mask: linear-gradient(to right, transparent, white var(--lefty,15%), white var(--righty,85%), transparent);
+    @media screen and (max-width: 514px) {
+        --lefty: 10%;
+        --righty: 90%;
+    }
 }
 .album-row {
     height: 200px;
