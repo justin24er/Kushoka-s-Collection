@@ -28,6 +28,7 @@ section.main-content {
     flex-direction: column;
     gap: 1rem;
     flex-grow: 1;
+    mask: linear-gradient(to right, transparent, white 10%, white 90%, transparent);
 }
 .album-row {
     height: 200px;
@@ -42,6 +43,24 @@ section.main-content {
     width: max-content;
     height: 90%;
     gap: 1rem;
+    animation: infiniteScroll
+                var(--duration,100s)
+                linear
+                infinite
+                var(--direction,forwards);
+    transform: translateX(0%)
+}
+@keyframes infiniteScroll {
+    to {
+        transform: translateX(calc(-50% - .5rem)) 
+    }
+}
+.row-2 {
+    --duration: 120s;
+    --direction: reverse;
+}
+.row-3 {
+    --duration: 60s;
 }
 .image-container {
     width: 150px;
@@ -50,6 +69,11 @@ section.main-content {
     padding: .2rem;
     border-radius: 7px 7px 7px 0;
     corner-shape: bevel;
+    outline: 2px dashed transparent;
+    outline-offset: 5px;
+}
+.image-container:hover {
+    outline-color: var(--card-bg)
 }
 .image-container .image {
     width: 100%;
@@ -60,7 +84,7 @@ section.main-content {
     height: 100%;
     object-fit: fill;
     border-radius: 5px;
-    corner-shape: bevel
+    corner-shape: bevel;
 }
 .image-container .image-date {
     position: absolute;

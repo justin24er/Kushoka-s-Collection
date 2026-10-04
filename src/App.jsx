@@ -5,6 +5,7 @@ import Form from './components/form' */
 import { useImages } from './hooks/useImages'
 import Button from './components/ui/button'
 import './App.css'
+import { useScrollLeft } from './hooks/useScrollLeft'
 
 
 function App() {
@@ -16,9 +17,9 @@ function App() {
            editDate,
         } = useImages()
 
-    const scrollRef1 = useRef(null);
-    const scrollRef2 = useRef(null);
-    const scrollRef3 = useRef(null);
+    const scrollRef1 = useScrollLeft(!loading && !error);
+    const scrollRef2 = useScrollLeft(!loading && !error);
+    const scrollRef3 = useScrollLeft(!loading && !error);
    
     return (<main>
         <header>
@@ -28,7 +29,7 @@ function App() {
             <div className="page-des">
                 <h1 className="page-title">
                     <span>Kumbukumbu</span>
-                    <span className="letter-list" aria-lable="za">
+                    <span className="letter-list" aria-label="za">
                         <span data-letter="z"></span>
                         <span data-letter="a"></span>
                     </span>
@@ -45,11 +46,16 @@ function App() {
             {loading ? <div className="loading page-album">{loading}</div> : 
                 (error ? <div className="error page-album">{error}</div> : 
                     <div className="page-album">
-                        <div ref={scrollRef1} onWheel={(e) => {
-                            e.preventDefault();
-                            scrollRef1.current.scrollLeft += e.deltaY;
-                        }} className="album-row row-1">
+                        <div ref={scrollRef1} className="album-row row-1">
                             <div className="images-wrapper">
+                                {images.map(image => (
+                                    <div key={image.id} title={image.jina} className="image-container">
+                                        <div className="image">
+                                            <img src={image.url} width="100" height="100" loading="lazy" alt={image.jina} />
+                                        </div>
+                                        <div className="image-date">{image.tarehe.replaceAll("-","/")}</div>
+                                    </div>
+                                ))}
                                 {images.map(image => (
                                     <div key={image.id} title={image.jina} className="image-container">
                                         <div className="image">
@@ -60,11 +66,16 @@ function App() {
                                 ))}
                             </div>
                         </div>
-                        <div ref={scrollRef2} onWheel={(e) => {
-                            e.preventDefault();
-                            scrollRef2.current.scrollLeft += e.deltaY;
-                        }} className="album-row row-2">
+                        <div ref={scrollRef2} className="album-row row-2">
                             <div className="images-wrapper">
+                                {images.map(image => (
+                                    <div key={image.id} title={image.jina} className="image-container">
+                                        <div className="image">
+                                            <img src={image.url} width="100" height="100" loading="lazy" alt={image.jina} />
+                                        </div>
+                                        <div className="image-date">{image.tarehe.replaceAll("-","/")}</div>
+                                    </div>
+                                ))}
                                 {images.map(image => (
                                     <div key={image.id} title={image.jina} className="image-container">
                                         <div className="image">
@@ -75,11 +86,16 @@ function App() {
                                 ))}
                             </div>
                         </div>
-                        <div ref={scrollRef3} onWheel={(e) => {
-                            e.preventDefault();
-                            scrollRef3.current.scrollLeft += e.deltaY;
-                        }} className="album-row row-3">
+                        <div ref={scrollRef3} className="album-row row-3">
                             <div className="images-wrapper">
+                                {images.map(image => (
+                                    <div key={image.id} title={image.jina} className="image-container">
+                                        <div className="image">
+                                            <img src={image.url} width="100" height="100" loading="lazy" alt={image.jina} />
+                                        </div>
+                                        <div className="image-date">{image.tarehe.replaceAll("-","/")}</div>
+                                    </div>
+                                ))}
                                 {images.map(image => (
                                     <div key={image.id} title={image.jina} className="image-container">
                                         <div className="image">
