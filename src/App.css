@@ -92,6 +92,9 @@ section.main-content {
     & .image img {
         filter: saturate(150%)
     }
+    @media (prefers-color-scheme: dark)  {
+        outline-color: #f3f1f183;
+    }
 }
 .image-container .image {
     width: 100%;
@@ -118,6 +121,9 @@ section.main-content {
     color: var(--clr-bg);
     display: flex;
     justify-content: center;
+    @media (prefers-color-scheme: dark) {
+        color: var(--clr-font)
+    }
 }
 .page-des {
     display: flex;

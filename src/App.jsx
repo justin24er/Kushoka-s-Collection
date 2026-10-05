@@ -1,6 +1,5 @@
 import {useState, useEffect, useRef} from 'react'
 /* import Input from './components/ui/input'
-import ImageCard from './components/imageCard'
 import Form from './components/form' */
 import { useImages } from './hooks/useImages'
 import Button from './components/ui/button'
