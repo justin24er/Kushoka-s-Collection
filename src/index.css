@@ -8,7 +8,7 @@
     --clr-btn: #00000077;
     --top-shadow: #fff;
     --bottom-shadow: #cacaca;
-    --card-bg: var(--clr-font);
+    --card-bg: #292929;
 
     --fs-300: 10px;
     --fs-400: 12px;
@@ -30,7 +30,8 @@
         --top-shadow: #383737;
         --bottom-shadow: #1a1919;
         --clr-p: #f3f1f1ad;
-   }  
+        --card-bg: #1b1111;
+    }  
 }
 *,
 *::after,
