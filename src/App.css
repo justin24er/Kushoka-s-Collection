@@ -16,6 +16,9 @@ header {
     display: flex;
     justify-content: space-between;
     padding: 1rem 2rem;
+    @media screen and (max-width: 514px) {
+        padding: 1.5rem .5rem;
+    }
 }
 header div:nth-child(1) {
     display: flex;
@@ -29,6 +32,9 @@ section.main-content {
     gap: 2rem;
     @media screen and (max-width: 1342px) {
         justify-content: center;
+    }
+    @media screen and (max-width: 514px) {
+        padding: 1rem .5rem;
     }
 }
 .main-content .page-album {
@@ -49,6 +55,9 @@ section.main-content {
     height: 200px;
     overflow-x: scroll;
     scroll-behavior: smooth;
+    @media screen and (max-width: 514px) {
+        height: 150px;
+    }
 }
 .album-row::-webkit-scrollbar {
     display: none;
@@ -86,14 +95,14 @@ section.main-content {
     corner-shape: bevel;
     outline: 2px dashed transparent;
     outline-offset: 5px;
+    @media screen and (max-width: 514px) {
+        width: 120px;
+    }
 }
 .image-container:hover {
-    outline-color: var(--card-bg);
+    outline-color: var(--img-hover);
     & .image img {
         filter: saturate(150%)
-    }
-    @media (prefers-color-scheme: dark)  {
-        outline-color: #f3f1f183;
     }
 }
 .image-container .image {
@@ -118,11 +127,11 @@ section.main-content {
     border-radius: 0 0 8px 0;
     corner-shape: bevel;
     font-size: var(--fs-400);
-    color: var(--clr-bg);
+    color: var(--clr-image-date);
     display: flex;
     justify-content: center;
-    @media (prefers-color-scheme: dark) {
-        color: var(--clr-font)
+    @media screen and (max-width: 514px) {
+        font-size: var(--fs-300)
     }
 }
 .page-des {
@@ -202,6 +211,14 @@ section.main-content {
     padding: 0 0 0 .5rem;
     border-radius: 3px;
     color: #292929;
+    @media (max-width: 514px) {
+        font-size: var(--fs-300);
+        padding: 0 0 0 .2rem;
+        & img {
+            width: 20px;
+            height: 20px;
+        }
+    }
 }
 .instructions strong.active {
     scale: .95;
