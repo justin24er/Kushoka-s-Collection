@@ -1,3 +1,7 @@
+::selection {
+    background: orange;
+    color: #292929
+}
 main {
     display: flex;
     flex-direction: column;
@@ -5,7 +9,7 @@ main {
     position: absolute;
     inset: 0;
     height: 100dvh;
-    min-height: max-content;
+    min-height: fit-content;
 }
 header {
     min-height: 65px;
@@ -99,6 +103,7 @@ section.main-content {
     object-fit: fill;
     border-radius: 5px;
     corner-shape: bevel;
+    user-select: none;
 }
 .image-container .image-date {
     position: absolute;
@@ -181,6 +186,7 @@ section.main-content {
 .page-des p {
     line-height: 1.5;
     max-width: 60ch;
+    color: var(--clr-p)
 }
 .instructions strong {
     display: inline-flex;
@@ -189,16 +195,17 @@ section.main-content {
     border: 1px solid #00000017;
     padding: 0 0 0 .5rem;
     border-radius: 3px;
+    color: #292929;
 }
 .instructions strong.active {
     scale: .95;
-    background: #dfdbdb;
+    background: #cac9c9;
 }
 footer {
     text-align: center;
     min-height: 35px;
-    background: var(--card-bg);
-    color: var(--clr-bg) ;
+    background: #292929;
+    color: #f3f1f1e0;
     display: flex;
     justify-content: center;
     align-items: center;

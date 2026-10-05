@@ -22,12 +22,16 @@
     --fw-600: 600;
     --fw-700: 900;
 }
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
    :root {
-        --clr-font: #e4e2e2;
-        --clr-bg: #2e2d2d;
+        --clr-font: #f3f1f1e0;
+        --clr-bg: #292929;
+        --clr-btn: #f3f1f188;
+        --top-shadow: #383737;
+        --bottom-shadow: #1a1919;
+        --clr-p: #f3f1f1ad;
    }  
-} */
+}
 *,
 *::after,
 *::before {

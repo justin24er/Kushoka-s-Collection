@@ -30,10 +30,22 @@ function App() {
     useEffect(() => {
         window.addEventListener("keydown",handleKeyDown)
         window.addEventListener("keyup",handleKeyUp)
-
+        const el = window.matchMedia('(prefers-color-scheme: light)')
+        const handler = (mode) => {if(mode.matches) {
+                    setMoon(true)
+                    setSun(false)
+                }
+                else {
+                    setMoon(false)
+                    setSun(true)
+                }
+            }
+        handler(el)
+        el.addEventListener("change",(e) => {handler(e)})
         return () => {
             window.removeEventListener("keydown", handleKeyDown)
             window.removeEventListener("keyup",handleKeyUp)
+            el.removeEventListener("change", (e) => {handler(e)})
         }
     },[])
 
