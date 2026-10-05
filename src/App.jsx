@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useRef} from 'react'
 /* import Input from './components/ui/input'
 import ImageCard from './components/imageCard'
 import Form from './components/form' */
@@ -16,6 +16,8 @@ function App() {
            removeImage,
            editDate,
         } = useImages()
+        const [moon, setMoon] = useState(true);
+        const [sun, setSun] = useState(false)
         /*  const scrollRef1 = useScrollLeft(!loading && !error);
         const scrollRef2 = useScrollLeft(!loading && !error);
         const scrollRef3 = useScrollLeft(!loading && !error); */ /* will be used when necessary, required when vertical image scrolling feature is needed */
@@ -35,9 +37,26 @@ function App() {
         }
     },[])
 
+    function handleMode() {
+         if(moon) {
+                setMoon(false)
+                setSun(true)
+            }
+        else {
+                setMoon(true)
+                setSun(false)
+            }
+    }
+
     return (<main>
         <header>
-            <Button className="admin-btn">msimazi</Button>
+            <div>
+                <Button className="admin-btn">msimazi</Button>
+                <Button onClick={handleMode} className="mode-btn">
+                    <i className={moon ? `active fa-solid fa-moon` : `fa-solid fa-moon`}></i>
+                    <i className={sun ? `active fa-solid fa-sun` : `fa-solid fa-sun`}></i>
+                </Button>
+            </div>
         </header>
         <section className="main-content">
             <div className="page-des">

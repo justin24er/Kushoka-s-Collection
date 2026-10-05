@@ -4,6 +4,7 @@ main {
     justify-content: space-between;
     position: absolute;
     inset: 0;
+    height: 100dvh;
     min-height: max-content;
 }
 header {
@@ -11,6 +12,10 @@ header {
     display: flex;
     justify-content: space-between;
     padding: 1rem 2rem;
+}
+header div:nth-child(1) {
+    display: flex;
+    gap: 1rem;
 }
 section.main-content {
     display: flex;
@@ -191,7 +196,7 @@ section.main-content {
 }
 footer {
     text-align: center;
-    min-height: 30px;
+    min-height: 35px;
     background: var(--card-bg);
     color: var(--clr-bg) ;
     display: flex;

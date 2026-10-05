@@ -52,7 +52,7 @@ export function useImages() {
             catch(err) {
                 dispatch({
                     type: "fetch_error",
-                    payload: err.message + "(kuna hitirafu kidogo!)"
+                    payload: err.message + " (kuna hitirafu kidogo!)"
                 })
             }
         }
@@ -69,7 +69,7 @@ export function useImages() {
             return {success: true}
         }
         catch(err) {
-            return {success: false, error: err.message + "(imegoma kurusha!)"}
+            return {success: false, error: err.message + " (imegoma kurusha!)"}
         }
     } 
 
@@ -83,7 +83,7 @@ export function useImages() {
             return {success: true}
         }
         catch(err) {
-            return {success: false, error: err.message + "(imegoma kufuta!)"}
+            return {success: false, error: err.message + " (imegoma kufuta!)"}
         }
     }
 
@@ -97,7 +97,7 @@ export function useImages() {
             return {success: true}
         }
         catch(err) {
-            return {success: false, error: err.message + "(imegoma kubadiri!)"}
+            return {success: false, error: err.message + " (imegoma kubadiri!)"}
         }
     }
 

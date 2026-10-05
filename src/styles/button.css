@@ -18,14 +18,36 @@ button.admin-btn {
                 -4px -4px 5px var(--top-shadow);
     border-radius: 50px;
     corner-shape: squircle;
-    position: relative;
     overflow: hidden;
     transition: .3s;
 }
-button.admin-btn:hover {
+button.admin-btn:hover,
+button.mode-btn:hover {
     color: var(--clr-font);    
 }
-button.admin-btn:active {
+button.admin-btn:active,
+button.mode-btn:active {
     box-shadow: inset 4px 4px 5px var(--bottom-shadow),
                 inset -4px -4px 5px var(--top-shadow);
 }
+button.mode-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: inherit;
+    padding: 1rem;
+    outline: none;
+    color: var(--clr-btn);
+    border: none;
+    background: var(--clr-bg);
+    box-shadow:  4px 4px 5px var(--bottom-shadow),
+                -4px -4px 5px var(--top-shadow);
+    border-radius: 50%;
+    overflow: hidden;
+    transition: .3s;
+}
+button.mode-btn i{
+    position: absolute;
+    display: none;
+}
+.mode-btn i.active {display: flex}
