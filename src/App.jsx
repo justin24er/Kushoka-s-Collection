@@ -50,11 +50,14 @@ function App() {
             el.removeEventListener("change", (e) => {handler(e)})
         }
     },[])
-
+    
+    const [bodyKey, setBodyKey] = useState(0)
     function handleMode() {
+        setBodyKey(prev => prev + 1)
+
          if(moon) {
-                setMoon(false)
-                setSun(true)
+             setMoon(false)
+             setSun(true)
                 setIsLight(false)
             }
         else {
@@ -65,7 +68,7 @@ function App() {
     }
 
     return (
-        <body className={isLight ? "" : "dark"}>
+        <div key={bodyKey} className={isLight ? "page-wrapper" : "page-wrapper dark"}>
             <main>
                 <header>
                     <div>
@@ -175,6 +178,6 @@ function App() {
                     imetengenezwa na kuandaliwa na <a href="#">Samwel Kushoka Cheo</a>.
                 </footer>
             </main>
-        </body>)
+        </div>)
 }
 export default App;
