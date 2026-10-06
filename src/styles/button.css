@@ -21,6 +21,7 @@ button.admin-btn {
     overflow: hidden;
     transition: .3s;
 }
+button.admin-btn:active {scale: .95}
 button.admin-btn:hover,
 button.mode-btn:hover {
     color: var(--clr-font);    
@@ -51,3 +52,6 @@ button.mode-btn i{
     display: none;
 }
 .mode-btn i.active {display: flex}
+button.mode-btn:active {
+    scale: .95;
+}
