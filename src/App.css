@@ -72,7 +72,10 @@ section.main-content {
                 linear
                 infinite
                 var(--direction,forwards);
-    transform: translateX(0%)
+    transform: translateX(0%);
+    @media screen and (max-width: 514px) {
+        height: 85%;
+    }
 }
 @keyframes infiniteScroll {
     to {
