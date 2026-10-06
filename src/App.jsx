@@ -8,6 +8,10 @@ import { useScrollLeft } from './hooks/useScrollLeft'
 import shiftLogo from './assets/up-arrow-thin.png'
 
 function App() {
+    /*  const scrollRef1 = useScrollLeft(!loading && !error);
+    const scrollRef2 = useScrollLeft(!loading && !error);
+    const scrollRef3 = useScrollLeft(!loading && !error); */ /* will be used when necessary, required when vertical image scrolling feature is needed */
+
     const {loading,
            error,
            images,
@@ -18,9 +22,7 @@ function App() {
         const [moon, setMoon] = useState(true)
         const [sun, setSun] = useState(false)
         const [isLight, setIsLight] = useState(false)
-        /*  const scrollRef1 = useScrollLeft(!loading && !error);
-        const scrollRef2 = useScrollLeft(!loading && !error);
-        const scrollRef3 = useScrollLeft(!loading && !error); */ /* will be used when necessary, required when vertical image scrolling feature is needed */
+        const [modeContent, setModeContent] = useState("")
 
     const [isKey, setIsKey] = useState(false)
     
@@ -35,10 +37,14 @@ function App() {
             if(mode.matches) {
                     setMoon(true)
                     setSun(false)
+                    setModeContent("")
+                    requestAnimationFrame(() => setModeContent("light"))
                 }
             else {
                     setMoon(false)
                     setSun(true)
+                    setModeContent("")
+                    requestAnimationFrame(() => setModeContent("dark"))
                 }
             setIsLight(mode.matches)
             }
@@ -51,24 +57,28 @@ function App() {
         }
     },[])
     
-    const [bodyKey, setBodyKey] = useState(0)
     function handleMode() {
-        setBodyKey(prev => prev + 1)
-
          if(moon) {
              setMoon(false)
              setSun(true)
-                setIsLight(false)
+             setIsLight(false)
+             setModeContent("")
+             requestAnimationFrame(() => setModeContent("dark"))
             }
         else {
-                setMoon(true)
-                setSun(false)
-                setIsLight(true)
+             setMoon(true)
+             setSun(false)
+             setIsLight(true)
+             setModeContent("")
+             requestAnimationFrame(() => setModeContent("light"))
             }
     }
 
     return (
-        <div key={bodyKey} className={isLight ? "page-wrapper" : "page-wrapper dark"}>
+        <div style={isLight 
+            ? {"--bgAfter": "#f3f1f1", "--bgBefore": "#292929"}
+            : {"--bgAfter": "#292929", "--bgBefore": "#f3f1f1"}} 
+            className={`page-wrapper ${modeContent}`}>
             <main>
                 <header>
                     <div>
