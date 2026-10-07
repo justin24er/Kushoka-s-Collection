@@ -55,3 +55,63 @@ button.mode-btn i{
 button.mode-btn:active {
     scale: .95;
 }
+button.card-close {
+    font-family: inherit;
+    position: absolute; 
+    top: 4dvh;
+    right: 10dvw;
+    font-size: 2rem;
+    border: none;
+    outline: none;
+    font-weight: var(--fw-200);
+    background: transparent;
+    border-radius: 50vw;
+    transition: .3s;
+    color: #f3f1f1d3;
+    z-index: 500;
+    @media screen and (max-width: 745px) {
+        right: 7%;
+        background: #f3f1f1;
+        color: #000;
+        width: 30px;
+        aspect-ratio: 1;
+        font-size: 1rem;
+        top: 6.5dvh;
+    }
+}
+button.card-close:hover {
+    color: #fff;
+    @media screen and (max-width: 745px) {
+        color: #000;
+    }
+}
+button.toggle {
+    border: 1px solid #ffffff9c;
+    padding-inline: .6rem;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--clr-font);
+    font-size: 2rem;
+    font-family: var(--ff-sub);
+    transition: .3s;
+    color: #ffffff9c;
+    position: relative;
+    @media screen and (max-width: 745px) {
+        position: absolute;
+        backdrop-filter: blur(5px);
+        z-index: 500;
+        font-size: 1.5rem;
+        padding-inline: .5rem;
+        &.left {
+            left: 7%;
+        }
+        &.right {
+            right: 7%;
+        }
+    }
+}
+button.toggle:hover {
+    color: #fff;
+    border-color: #fff;
+    background: #ffffff2f;
+}

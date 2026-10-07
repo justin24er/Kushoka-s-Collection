@@ -1,0 +1,45 @@
+.image-viewer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    inset: 0;
+    backdrop-filter: blur(2px) brightness(40%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    z-index: 500;
+}
+.image-scroll-wrapper {
+    width: 500px;
+    height: 90dvh;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 100%;
+    gap: 1rem;
+    border-radius: 15px;
+    outline: 1px dashed var(--clr-font);
+    outline-offset: 3px;
+    background: #292929;
+    position: relative;
+
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+
+    & .image-view {
+        scroll-snap-align: center;
+        overflow: hidden;
+        & img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    @media screen and (max-width: 745px) {
+        width: 90dvw;
+    }
+}
+.image-scroll-wrapper::-webkit-scrollbar {
+    display: none;
+}

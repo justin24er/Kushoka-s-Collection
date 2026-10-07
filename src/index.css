@@ -3,6 +3,7 @@
 :root {
     --ff-primary: 'Mochiy Pop One';
     --ff-secondary: 'Raleway';
+    --ff-sub: monospace;
     --clr-font: #292929;
     --clr-bg: #f3f1f1;
     --clr-btn: #00000077;

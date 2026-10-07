@@ -6,6 +6,7 @@ import Button from './components/ui/button'
 import './App.css'
 import { useScrollLeft } from './hooks/useScrollLeft'
 import shiftLogo from './assets/up-arrow-thin.png'
+import ImageViewer from './components/imageViewer'
 
 function App() {
     /*  const scrollRef1 = useScrollLeft(!loading && !error);
@@ -181,6 +182,18 @@ function App() {
                             </div>
                         )}
                 </section>
+                <ImageViewer>
+                    <Button className="card-close">x</Button>
+                    <Button className="toggle left">{`<`}</Button>
+                    <div className="image-scroll-wrapper">
+                        {images.map(image => (
+                            <div key={image.id} className="image-view">
+                                <img src={image.url} loading="lazy" alt={image.jina} />
+                            </div>
+                        ))}
+                    </div>
+                    <Button className="toggle right">{`>`}</Button>
+                </ImageViewer>
                 <footer>
                     &copy; All rights reserved {(new Date())
                     .toLocaleDateString()
