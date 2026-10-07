@@ -17,7 +17,7 @@
     grid-auto-columns: 100%;
     gap: 1rem;
     border-radius: 15px;
-    outline: 1px dashed var(--clr-font);
+    outline: 1px dashed #f3f1f1;
     outline-offset: 3px;
     background: #292929;
     position: relative;
@@ -27,6 +27,7 @@
 
     & .image-view {
         scroll-snap-align: center;
+        overflow: hidden;
         overflow: hidden;
         & img {
             width: 100%;
