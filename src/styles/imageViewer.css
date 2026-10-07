@@ -27,6 +27,7 @@
 
     & .image-view {
         scroll-snap-align: center;
+        scroll-snap-stop: always;
         overflow: hidden;
         overflow: hidden;
         & img {
