@@ -4,7 +4,7 @@ import Form from './components/form' */
 import { useImages } from './hooks/useImages'
 import Button from './components/ui/button'
 import './App.css'
-import { useScrollLeft } from './hooks/useScrollLeft'
+/* import { useScrollLeft } from './hooks/useScrollLeft'*/
 import shiftLogo from './assets/up-arrow-thin.png'
 import ImageViewer from './components/imageViewer'
 
@@ -20,11 +20,12 @@ function App() {
            removeImage,
            editDate,
         } = useImages()
-        const [moon, setMoon] = useState(true)
-        const [sun, setSun] = useState(false)
-        const [isLight, setIsLight] = useState(false)
-        const [modeContent, setModeContent] = useState("")
-        const [isView, setIsView] = useState(false)
+    const [moon, setMoon] = useState(true)
+    const [sun, setSun] = useState(false)
+    const [isLight, setIsLight] = useState(false)
+    const [modeContent, setModeContent] = useState("")
+    const [view, setView] = useState("")
+    const elRef = useRef({})
 
     const [isKey, setIsKey] = useState(false)
     
@@ -58,6 +59,17 @@ function App() {
             el.removeEventListener("change", (e) => {handler(e)})
         }
     },[])
+
+    useEffect(() => {
+        const el = elRef.current[view]
+        if(el) {
+            el.scrollIntoView({
+                behavior: "instant",
+                block: "center",
+                inline: "nearest"
+            })
+        }
+    },[view])
     
     function handleMode() {
          if(moon) {
@@ -123,7 +135,7 @@ function App() {
                                 <div /* ref={scrollRef1} */ className="album-row row-1">
                                     <div className="images-wrapper">
                                         {images.map(image => (
-                                            <div onClick={() => setIsView(true)} key={image.id} title={image.jina} className="image-container">
+                                            <div onClick={() => setView(image.id)} key={image.id} title={image.jina} className="image-container">
                                                 <div className="image">
                                                     <img src={image.url} width="100" height="100" loading="lazy" alt={image.jina} />
                                                 </div>
@@ -131,7 +143,7 @@ function App() {
                                             </div>
                                         ))}
                                         {images.map(image => (
-                                            <div onClick={() => setIsView(true)} key={image.id} title={image.jina} className="image-container">
+                                            <div onClick={() => setView(image.id)} key={image.id} title={image.jina} className="image-container">
                                                 <div className="image">
                                                     <img src={image.url} width="100" height="100" loading="lazy" alt={image.jina} />
                                                 </div>
@@ -143,7 +155,7 @@ function App() {
                                 <div /* ref={scrollRef2} */ className="album-row row-2">
                                     <div className="images-wrapper">
                                         {images.map(image => (
-                                            <div onClick={() => setIsView(true)} key={image.id} title={image.jina} className="image-container">
+                                            <div onClick={() => setView(image.id)} key={image.id} title={image.jina} className="image-container">
                                                 <div className="image">
                                                     <img src={image.url} width="100" height="100" loading="lazy" alt={image.jina} />
                                                 </div>
@@ -151,7 +163,7 @@ function App() {
                                             </div>
                                         ))}
                                         {images.map(image => (
-                                            <div onClick={() => setIsView(true)} key={image.id} title={image.jina} className="image-container">
+                                            <div onClick={() => setView(image.id)} key={image.id} title={image.jina} className="image-container">
                                                 <div className="image">
                                                     <img src={image.url} width="100" height="100" loading="lazy" alt={image.jina} />
                                                 </div>
@@ -163,7 +175,7 @@ function App() {
                                 <div /* ref={scrollRef3} */ className="album-row row-3">
                                     <div className="images-wrapper">
                                         {images.map(image => (
-                                            <div onClick={() => setIsView(true)} key={image.id} title={image.jina} className="image-container">
+                                            <div onClick={() => setView(image.id)} key={image.id} title={image.jina} className="image-container">
                                                 <div className="image">
                                                     <img src={image.url} width="100" height="100" loading="lazy" alt={image.jina} />
                                                 </div>
@@ -171,7 +183,7 @@ function App() {
                                             </div>
                                         ))}
                                         {images.map(image => (
-                                            <div onClick={() => setIsView(true)} key={image.id} title={image.jina} className="image-container">
+                                            <div onClick={() => setView(image.id)} key={image.id} title={image.jina} className="image-container">
                                                 <div className="image">
                                                     <img src={image.url} width="100" height="100" loading="lazy" alt={image.jina} />
                                                 </div>
@@ -184,15 +196,18 @@ function App() {
                         )}
                 </section>
                 <ImageViewer 
-                    style={{display: isView ? "flex" : "none"}}
+                    style={{display: view ? "flex" : "none"}}
                     className="image-viewer">
                         <Button 
                             className="card-close"
-                            onClick={() => setIsView(false)}>x</Button>
+                            onClick={() => setView("")}>x</Button>
                         <Button className="toggle left">{`<`}</Button>
                         <div className="image-scroll-wrapper">
                             {images.map(image => (
-                                <div key={image.id} className="image-view">
+                                <div 
+                                    ref={(el) => elRef.current[image.id] = el}
+                                    key={image.id} 
+                                    className="image-view">
                                     <img src={image.url} loading="lazy" alt={image.jina} />
                                 </div>
                             ))}
