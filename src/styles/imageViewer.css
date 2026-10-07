@@ -4,7 +4,6 @@
     left: 0;
     inset: 0;
     backdrop-filter: blur(2px) brightness(40%);
-    display: flex;
     align-items: center;
     justify-content: center;
     gap: 3rem;
