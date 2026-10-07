@@ -24,6 +24,7 @@ function App() {
         const [sun, setSun] = useState(false)
         const [isLight, setIsLight] = useState(false)
         const [modeContent, setModeContent] = useState("")
+        const [isView, setIsView] = useState(false)
 
     const [isKey, setIsKey] = useState(false)
     
@@ -122,7 +123,7 @@ function App() {
                                 <div /* ref={scrollRef1} */ className="album-row row-1">
                                     <div className="images-wrapper">
                                         {images.map(image => (
-                                            <div key={image.id} title={image.jina} className="image-container">
+                                            <div onClick={() => setIsView(true)} key={image.id} title={image.jina} className="image-container">
                                                 <div className="image">
                                                     <img src={image.url} width="100" height="100" loading="lazy" alt={image.jina} />
                                                 </div>
@@ -130,7 +131,7 @@ function App() {
                                             </div>
                                         ))}
                                         {images.map(image => (
-                                            <div key={image.id} title={image.jina} className="image-container">
+                                            <div onClick={() => setIsView(true)} key={image.id} title={image.jina} className="image-container">
                                                 <div className="image">
                                                     <img src={image.url} width="100" height="100" loading="lazy" alt={image.jina} />
                                                 </div>
@@ -142,7 +143,7 @@ function App() {
                                 <div /* ref={scrollRef2} */ className="album-row row-2">
                                     <div className="images-wrapper">
                                         {images.map(image => (
-                                            <div key={image.id} title={image.jina} className="image-container">
+                                            <div onClick={() => setIsView(true)} key={image.id} title={image.jina} className="image-container">
                                                 <div className="image">
                                                     <img src={image.url} width="100" height="100" loading="lazy" alt={image.jina} />
                                                 </div>
@@ -150,7 +151,7 @@ function App() {
                                             </div>
                                         ))}
                                         {images.map(image => (
-                                            <div key={image.id} title={image.jina} className="image-container">
+                                            <div onClick={() => setIsView(true)} key={image.id} title={image.jina} className="image-container">
                                                 <div className="image">
                                                     <img src={image.url} width="100" height="100" loading="lazy" alt={image.jina} />
                                                 </div>
@@ -162,7 +163,7 @@ function App() {
                                 <div /* ref={scrollRef3} */ className="album-row row-3">
                                     <div className="images-wrapper">
                                         {images.map(image => (
-                                            <div key={image.id} title={image.jina} className="image-container">
+                                            <div onClick={() => setIsView(true)} key={image.id} title={image.jina} className="image-container">
                                                 <div className="image">
                                                     <img src={image.url} width="100" height="100" loading="lazy" alt={image.jina} />
                                                 </div>
@@ -170,7 +171,7 @@ function App() {
                                             </div>
                                         ))}
                                         {images.map(image => (
-                                            <div key={image.id} title={image.jina} className="image-container">
+                                            <div onClick={() => setIsView(true)} key={image.id} title={image.jina} className="image-container">
                                                 <div className="image">
                                                     <img src={image.url} width="100" height="100" loading="lazy" alt={image.jina} />
                                                 </div>
@@ -182,17 +183,21 @@ function App() {
                             </div>
                         )}
                 </section>
-                <ImageViewer>
-                    <Button className="card-close">x</Button>
-                    <Button className="toggle left">{`<`}</Button>
-                    <div className="image-scroll-wrapper">
-                        {images.map(image => (
-                            <div key={image.id} className="image-view">
-                                <img src={image.url} loading="lazy" alt={image.jina} />
-                            </div>
-                        ))}
-                    </div>
-                    <Button className="toggle right">{`>`}</Button>
+                <ImageViewer 
+                    style={{display: isView ? "flex" : "none"}}
+                    className="image-viewer">
+                        <Button 
+                            className="card-close"
+                            onClick={() => setIsView(false)}>x</Button>
+                        <Button className="toggle left">{`<`}</Button>
+                        <div className="image-scroll-wrapper">
+                            {images.map(image => (
+                                <div key={image.id} className="image-view">
+                                    <img src={image.url} loading="lazy" alt={image.jina} />
+                                </div>
+                            ))}
+                        </div>
+                        <Button className="toggle right">{`>`}</Button>
                 </ImageViewer>
                 <footer>
                     &copy; All rights reserved {(new Date())

@@ -1,10 +1,14 @@
 import '../styles/imageViewer.css'
 
 function ImageViewer({
-    children
+    children,
+    className,
+    style
 }) {
     return (
-        <section className="image-viewer">
+        <section 
+        className={className}
+        style={style}>
             {children}
         </section>
     )
