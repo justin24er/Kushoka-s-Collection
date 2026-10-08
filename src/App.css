@@ -51,6 +51,9 @@ section.main-content {
         --righty: 90%;
     }
 }
+.error {
+    color: red;
+}
 .album-row {
     height: 200px;
     overflow-x: scroll;
