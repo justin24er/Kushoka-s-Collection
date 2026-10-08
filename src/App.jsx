@@ -70,6 +70,13 @@ function App() {
             })
         }
     },[view])
+
+    function scrollLeft() {
+        
+    }
+    function scrollRight() {
+
+    }
     
     function handleMode() {
          if(moon) {
@@ -202,7 +209,7 @@ function App() {
                             className="card-close"
                             onClick={() => setView("")}>x</Button>
                         <Button className="toggle left">{`<`}</Button>
-                        <div className="image-scroll-wrapper">
+                        <div onClick={scrollLeft} className="image-scroll-wrapper">
                             {images.map(image => (
                                 <div 
                                     ref={(el) => elRef.current[image.id] = el}
@@ -212,7 +219,7 @@ function App() {
                                 </div>
                             ))}
                         </div>
-                        <Button className="toggle right">{`>`}</Button>
+                        <Button onClick={scrollRight} className="toggle right">{`>`}</Button>
                 </ImageViewer>
                 <footer>
                     &copy; All rights reserved {(new Date())
