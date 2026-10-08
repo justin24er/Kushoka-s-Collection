@@ -26,6 +26,7 @@ function App() {
     const [modeContent, setModeContent] = useState("")
     const [view, setView] = useState("")
     const elRef = useRef({})
+    const imageWrapperRef = useRef(null)
 
     const [isKey, setIsKey] = useState(false)
     
