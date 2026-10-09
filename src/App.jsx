@@ -25,10 +25,12 @@ function App() {
     const [isLight, setIsLight] = useState(false)
     const [modeContent, setModeContent] = useState("")
     const [view, setView] = useState("")
+    const [isKey, setIsKey] = useState(false)
+    const [currentIndex, setCurrentIndex] = useState("")
+
     const elRef = useRef({})
     const imageWrapperRef = useRef(null)
 
-    const [isKey, setIsKey] = useState(false)
     
     const handleKeyDown = (e) => e.key === "Shift" && setIsKey(true)
     const handleKeyUp = (e) => e.key === "Shift" && setIsKey(false)
@@ -72,8 +74,15 @@ function App() {
         }
     },[view])
 
+    useEffect(() => {
+        const parent = imageWrapperRef.current
+        if(!parent) return //avoiding empty reference that happens before pare render 
+
+
+    })
+
     function scrollLeft() {
-        
+         
     }
     function scrollRight() {
 
@@ -210,7 +219,9 @@ function App() {
                             className="card-close"
                             onClick={() => setView("")}>x</Button>
                         <Button className="toggle left">{`<`}</Button>
-                        <div onClick={scrollLeft} className="image-scroll-wrapper">
+                        <div
+                            ref={imageWrapperRef} 
+                            onClick={scrollLeft} className="image-scroll-wrapper">
                             {images.map(image => (
                                 <div 
                                     ref={(el) => elRef.current[image.id] = el}
