@@ -78,7 +78,19 @@ function App() {
         const parent = imageWrapperRef.current
         if(!parent) return //avoiding empty reference that happens before pare render 
 
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.intersectionRatio >= 0.5) {
+                    return () => 
+                        setCurrentIndex([...parent.children]
+                        .indexOf(entry.target))
+                }
+            })
+        },{root: parent, threshold: 0.5})
+        parent.querySelectorAll(".image-view")
+        .forEach(div => observer.observe(div))
 
+        return () => observer.disconnect(); //cleanup
     })
 
     function scrollLeft() {
