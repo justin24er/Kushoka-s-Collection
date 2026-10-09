@@ -26,7 +26,7 @@ function App() {
     const [modeContent, setModeContent] = useState("")
     const [view, setView] = useState("")
     const [isKey, setIsKey] = useState(false)
-    const [currentIndex, setCurrentIndex] = useState("")
+    const [currentIndex, setCurrentIndex] = useState(0)
 
     const elRef = useRef({})
     const imageWrapperRef = useRef(null)
@@ -80,13 +80,11 @@ function App() {
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if(entry.intersectionRatio >= 0.5) {
-                    return () => 
-                        setCurrentIndex([...parent.children]
-                        .indexOf(entry.target))
+                if(entry.intersectionRatio >= 0.6) {
+                    setCurrentIndex([...parent.children].indexOf(entry.target))
                 }
             })
-        },{root: parent, threshold: 0.5})
+        },{root: parent, threshold: 0.6})
         parent.querySelectorAll(".image-view")
         .forEach(div => observer.observe(div))
 
@@ -94,10 +92,20 @@ function App() {
     })
 
     function scrollLeft() {
-         
+         imageWrapperRef.current.children[currentIndex - 1]
+         ?.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+            inline: "center"
+         })
     }
     function scrollRight() {
-
+        imageWrapperRef.current.children[currentIndex + 1]
+        ?.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+            inline: "center"
+        })
     }
     
     function handleMode() {
@@ -230,7 +238,7 @@ function App() {
                         <Button 
                             className="card-close"
                             onClick={() => setView("")}>x</Button>
-                        <Button className="toggle left">{`<`}</Button>
+                        <Button onClick={scrollLeft} className="toggle left">{`<`}</Button>
                         <div
                             ref={imageWrapperRef} 
                             onClick={scrollLeft} className="image-scroll-wrapper">
