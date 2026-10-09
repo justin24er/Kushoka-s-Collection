@@ -16,9 +16,9 @@ function App() {
     const {loading,
            error,
            images,
-           uploadImage,
+           /* uploadImage,
            removeImage,
-           editDate,
+           editDate, */
         } = useImages()
     const [moon, setMoon] = useState(true)
     const [sun, setSun] = useState(false)
